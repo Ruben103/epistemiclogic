@@ -13,9 +13,11 @@ class Game():
         self.rounds = []
         self.current_round = Round(self.players, rd.randint(1,num_players), game=self)
 
+
+
     def initialize_players(self, num_players):
         for i in range(1, num_players + 1):
-            self.players.append(Player(name='P' + str(i), game=self), round=self.current_round)
+            self.players.append(Player(name='P' + str(i), game=self))
 
     def save_round(self, state_of_round):
         self.rounds.append(state_of_round)
@@ -28,7 +30,7 @@ class Round():
         self.CK = []
         self.players = players
         self.starting_player = starting_player
-        self.num_dice = self.count_dice()
+        self.num_dice = self.count_dice(self.players)
 
         self.curr_bid_num = None
         self.curr_bid_val = None
@@ -89,6 +91,7 @@ class Round():
 
     def count_dice(self, players):
         count = 0
+
         for player in players:
             count += player.get_num_dice()
         return count
@@ -96,7 +99,7 @@ class Round():
 
 class Player():
 
-    def __init__(self, name, round):
+    def __init__(self, name, game):
         self.name = name
         self.num_dice = 6
         self.dice = self.init_dice(self.num_dice)

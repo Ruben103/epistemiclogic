@@ -13,6 +13,16 @@ class Game():
         self.rounds = []
         self.current_round = Round(self.players, rd.randint(1,num_players))
 
+        self.add_round_to_players(self.current_round)
+        self.add_game_to_round(self)
+
+    def add_round_to_players(self, round):
+        for p in self.players:
+            p.add_round(round)
+
+    def add_game_to_round(self):
+        self.current_round.get_game(self)
+
     def initialize_players(self, num_players):
         for i in range(1, num_players + 1):
             self.players.append(Player(name='P' + str(i), game=self))
@@ -20,6 +30,8 @@ class Game():
     def save_round(self, state_of_round):
         self.rounds.append(state_of_round)
 
+    def next_round(self):
+        pass
 
 class Round():
 
@@ -30,10 +42,14 @@ class Round():
         self.starting_player = starting_player
         self.num_dice = self.count_dice(self.players)
 
+        self.previous_player = None
         self.curr_bid_num = None
         self.curr_bid_val = None
 
         self.end_of_bid_phase = False
+
+    def get_game(self, game):
+        self.game = game
 
     def update_CK(self, bid_num, bid_val):
         """
@@ -43,7 +59,14 @@ class Round():
         This function should also prompt all of the players' knowledge bases
         :return:
         """
-        pass
+
+        self.CK.append((bid_num, bid_val))
+
+    def get_total_dice(self):
+        tot = 0
+        for p in self.players:
+            tot += p.get_num_dice()
+        return tot
 
     def controller(self, it):
         """
@@ -53,40 +76,46 @@ class Round():
         :return:
         """
 
-        current_player = self.players[it - 1]
+        player = self.players[it - 1]
+        it = it + 1 if it + 1 < len(self.players) else 1
         if not self.end_of_bid_phase:
 
-            bid_num, bid_val = current_player.ask_bid(self.curr_bid_num, self.curr_bid_val)
+            bid_num, bid_val = player.ask_bid(self.curr_bid_num, self.curr_bid_val)
             if bid_num == -1 and bid_val == -1:
                 self.end_of_bid_phase = True
+                self.previous_player.valuation = True
             else:
                 self.update_CK(bid_num, bid_val)
                 self.curr_bid_num = bid_num; self.curr_bid_val = bid_val
-            self.controller(it = it + 1 if it + 1 != len(self.players) else 0)
+            self.previous_player = player
+            self.controller(it)
         else:
+            print("Valuation was not believed by player. bid_num:", self.curr_bid_num, "bid_val:", self.curr_bid_val)
             for p in self.players:
                 if p.valuation is not None:
-                    current_player.val_bid(self.curr_bid_num, self.curr_bid_val)
+                    p.is_possible(self.curr_bid_num, self.curr_bid_val)
+                p.update_valuation(p.is_possible(self.curr_bid_num, self.curr_bid_val))
+                p.print_believes(self.curr_bid_num, self.curr_bid_val)
             self.end_of_round()
 
     def is_possible(self, dice):
-        pass
+        return dice.count(self.curr_bid_val) < self.curr_bid_num
 
     def end_of_round(self):
         dice = []
         for p in self.players:
-            dice.append(p.dice)
+            for d in p.dice:
+                dice.append(d)
         valuation = self.is_possible(dice)
-        for i in range(len(self.players)):
-            p = self.players(i)
-            p_eval = p.remove_dice(valuation)
-            if p_eval == True:
-                print("Player", i, "'s valuation is correct \n no dice is removed from his stock")
-            if p_eval == False:
-                print("Player", i, "'s valuation is false \n one dice is removed from his stock")
-        self.save_round(self)
+        for p in self.players:
+            p.remove_dice(valuation)
+
+        # self.save_round(self)
+        self.game
         self.reset_CK()
         self.controller(self.starting_player)
+
+        print()
 
     def reset_CK(self):
         self.CK = []
@@ -112,11 +141,22 @@ class Player():
         self.curr_bid_val = None
         self.valuation = None
 
+    def add_round(self, round):
+        self.round = round
+
     def init_dice(self, num_dice):
         dice = []
         for i in range(num_dice):
             dice.append(rd.randint(1, 6))
         return sorted(dice)
+
+    def remove_dice(self, valuation):
+
+        if self.valuation != valuation:
+            print("Player", self.name, "'s valuation is incorrect \nOne dice is removed from his stock")
+        else:
+            print("Player", self.name, "'s valuation is correct \nNO dice is removed from his stock")
+        1==1
 
     def update_dice(self, new):
         self.num_dice = new
@@ -127,8 +167,25 @@ class Player():
     def get_num_dice(self):
         return self.num_dice
 
+    def get_amount_dice(self, val):
+        return self.dice.count(val)
+
+    def amount_possible(self, tot, num, val):
+        return int(tot / 3)
+
+    def update_valuation(self, valuation):
+        self.valuation = valuation
+
     def is_possible(self, bid_num, bid_val):
-        return True
+        tot = self.round.get_total_dice()
+        amount = self.amount_possible(tot, bid_num, bid_val) + self.get_amount_dice(bid_val)
+        return amount >= bid_num
+
+    def print_believes(self, num, val):
+        if self.is_possible(num, val):
+            print("\nI'm", self.name, "and I believe this bid because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
+        else:
+            print("\nI'm", self.name, "and I do NOT believe this because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
 
     def ask_bid(self, bid_num, bid_val):
         """
@@ -136,19 +193,20 @@ class Player():
         The player needs to make a higher offer than the previous one. (Round.curr_bid_num, Round.curr_bid_val).
         :return: tuple: bid_num, bid_val
         """
-        if self.is_possible(bid_num, bid_val):
-            return 3, 4
+        if bid_num is not None and bid_val is not None:
+            if self.is_possible(bid_num, bid_val):
+                if bid_val == 6:
+                    return bid_num + 1, 2
+                else:
+                    return bid_num, bid_val + 1
+            else:
+                print("First player not to believe:")
+                self.print_believes(bid_num, bid_val)
+                self.valuation = False
+                return -1, -1
         else:
-            return False, False
+            return 1, 2
 
-    def val_bid(self, bid_num, bid_val):
-        """
-        This function is prompted when the bidding phase is over.
-        :param bid_num:
-        :param bid_val:
-        :return: return T/F for whether they believe the current bid is possible or not.
-        """
-        pass
 
 if __name__ == '__main__':
     game = Game(num_players=4)

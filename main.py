@@ -15,14 +15,24 @@ class Game():
         self.rounds = []
         self.current_round = Round(self.players, rd.randint(1,num_players))
 
+        self.add_rounds()
+        self.current_round.controller(rd.randint(1,num_players))
+
+    def add_rounds(self):
         self.add_round_to_players(self.current_round)
         self.add_game_to_round(self)
-
-        self.current_round.controller(rd.randint(1,num_players))
 
     def add_round_to_players(self, round):
         for p in self.players:
             p.add_round(round)
+
+    def remove_player(self, player):
+        for p in self.players:
+            if p.name == player.name:
+                self.players.remove(p)
+        if len(self.players) == 1:
+            print("WE HAVE A WINNER!!!\nIts ya boy ", self.players[0].name)
+            quit()
 
     def add_game_to_round(self, game):
         self.current_round.get_game(game)
@@ -37,9 +47,9 @@ class Game():
     def new_round(self, round, starting_player):
         self.save_round(round)
         self.current_round = Round(self.players, starting_player)
+        self.add_rounds()
         print("\nROUND NUMBER", len(self.rounds) + 1, "LETS GO\n")
         self.current_round.controller(self.current_round.starting_player)
-
 
 
 class Round():
@@ -76,6 +86,9 @@ class Round():
             tot += p.get_num_dice()
         return tot
 
+    def next_player(self, it):
+        return it + 1 if it + 1 < len(self.players) else 1
+
     def controller(self, it):
         """
         Haven't tested yet if the iterator gives segmentation errors yet, but the structure should be smt like this
@@ -86,7 +99,7 @@ class Round():
 
         player = self.players[it - 1]
         self.previous_it = it
-        it = it + 1 if it + 1 < len(self.players) else 1
+        it = self.next_player(it)
         if not self.end_of_bid_phase:
 
             bid_num, bid_val = player.ask_bid(self.curr_bid_num, self.curr_bid_val)
@@ -149,24 +162,6 @@ class Player():
     def add_round(self, round):
         self.round = round
 
-    def init_dice(self, num_dice):
-        dice = []
-        for i in range(num_dice):
-            dice.append(rd.randint(1, 6))
-        return sorted(dice)
-
-    def remove_dice(self, valuation):
-
-        if self.valuation != valuation:
-            print("Player", self.name, "'s valuation is incorrect \nOne dice is removed from his stock")
-            if self.num_dice > 1:
-                self.num_dice -= 1
-            else:
-                print("\n",self.name, "'s dice stock is completely empty. He is out of the game")
-        else:
-            print("Player", self.name, "'s valuation is correct \nNO dice is removed from his stock")
-        1==1
-
     def update_dice(self, new):
         self.num_dice = new
 
@@ -184,6 +179,25 @@ class Player():
 
     def update_valuation(self, valuation):
         self.valuation = valuation
+
+    def init_dice(self, num_dice):
+        dice = []
+        for i in range(num_dice):
+            dice.append(rd.randint(1, 6))
+        return sorted(dice)
+
+    def remove_dice(self, valuation):
+
+        if self.valuation != valuation:
+            print("Player", self.name, "'s valuation is incorrect \nOne dice is removed from his stock")
+            if self.num_dice > 1:
+                self.num_dice -= 1
+            else:
+                self.num_dice -= 1
+                self.round.game.remove_player(self)
+                print("\n",self.name, "'s dice stock is completely empty. He is out of the game")
+        else:
+            print("Player", self.name, "'s valuation is correct \nNO dice is removed from his stock")
 
     def is_possible(self, bid_num, bid_val):
         tot = self.round.get_total_dice()

@@ -210,12 +210,12 @@ class Player():
             return 1, 2
 
 
-
 class playGame(Resource):
     game = Game(num_players=4)
     game.current_round.controller(game.current_round.starting_player)
 
     print("BUGSTOPPER")
+
 
 if __name__ == '__main__':
     game = Game(num_players=4)

@@ -11,9 +11,7 @@ class Game():
 
         # keep track of rounds for information retrieval in later stages
         self.rounds = []
-        self.current_round = Round(self.players, rd.randint(1,num_players), game=self)
-
-
+        self.current_round = Round(self.players, rd.randint(1,num_players))
 
     def initialize_players(self, num_players):
         for i in range(1, num_players + 1):
@@ -25,8 +23,8 @@ class Game():
 
 class Round():
 
-    def __init__(self, players, starting_player, game):
-        self.game = game
+    def __init__(self, players, starting_player):
+        # self.game = game
         self.CK = []
         self.players = players
         self.starting_player = starting_player
@@ -37,7 +35,7 @@ class Round():
 
         self.end_of_bid_phase = False
 
-    def update_CK(self, bid_num, bid_value):
+    def update_CK(self, bid_num, bid_val):
         """
         This function updates the Common Knowledge base based on the bids of each player per round.
         Determine probabilistically what the other agents believe the amount
@@ -55,11 +53,15 @@ class Round():
         :return:
         """
 
-        current_player = self.players(it - 1)
+        current_player = self.players[it - 1]
         if not self.end_of_bid_phase:
 
-            bid_num, bid_val = current_player.ask_bid()
-            self.update_CK(bid_num, bid_val)
+            bid_num, bid_val = current_player.ask_bid(self.curr_bid_num, self.curr_bid_val)
+            if bid_num == -1 and bid_val == -1:
+                self.end_of_bid_phase = True
+            else:
+                self.update_CK(bid_num, bid_val)
+                self.curr_bid_num = bid_num; self.curr_bid_val = bid_val
             self.controller(it = it + 1 if it + 1 != len(self.players) else 0)
         else:
             for p in self.players:
@@ -126,21 +128,18 @@ class Player():
         return self.num_dice
 
     def is_possible(self, bid_num, bid_val):
-        pass
+        return True
 
-    def ask_bid(self):
+    def ask_bid(self, bid_num, bid_val):
         """
         This function makes a bid based on the players KB.
         The player needs to make a higher offer than the previous one. (Round.curr_bid_num, Round.curr_bid_val).
         :return: tuple: bid_num, bid_val
         """
-        if self.is_possible(self.curr_bid_num, self.curr_bid_val):
-            # give a higher bid.
-            pass
-            # return bid_num, bid_val
+        if self.is_possible(bid_num, bid_val):
+            return 3, 4
         else:
-            pass
-            # return False, False
+            return False, False
 
     def val_bid(self, bid_num, bid_val):
         """
@@ -153,5 +152,6 @@ class Player():
 
 if __name__ == '__main__':
     game = Game(num_players=4)
+    game.current_round.controller(game.current_round.starting_player)
 
     print("BUGSTOPPER")

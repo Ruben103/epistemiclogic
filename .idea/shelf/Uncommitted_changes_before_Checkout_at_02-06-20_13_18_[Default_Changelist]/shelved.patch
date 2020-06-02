@@ -1,0 +1,47 @@
+Index: WebInterface/public/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"public\",\n  \"version\": \"0.1.0\",\n  \"homepage\": \"https://diarmuidkelly.github.io/your_project_repository_name/\",,\n  \"private\": true,\n  \"dependencies\": {\n    \"@material-ui/core\": \"^4.10.0\",\n    \"@material-ui/icons\": \"^4.9.1\",\n    \"@testing-library/jest-dom\": \"^4.2.4\",\n    \"@testing-library/react\": \"^9.5.0\",\n    \"@testing-library/user-event\": \"^7.2.1\",\n    \"markdown-to-jsx\": \"^6.11.4\",\n    \"marked\": \"^1.1.0\",\n    \"react\": \"^16.13.1\",\n    \"react-dom\": \"^16.13.1\",\n    \"react-markdown\": \"^4.3.1\",\n    \"react-scripts\": \"3.4.1\",\n    \"webpack\": \"^4.43.0\",\n    \"webpack-dev-server\": \"^3.11.0\"\n  },\n  \"scripts\": {\n    \"start\": \"webpack-dev-server --mode development --open --hot\",\n    \"build\": \"webpack --mode production\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"eslintConfig\": {\n    \"extends\": \"react-app\"\n  },\n  \"browserslist\": {\n    \"production\": [\n      \">0.2%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ],\n    \"development\": [\n      \"last 1 chrome version\",\n      \"last 1 firefox version\",\n      \"last 1 safari version\"\n    ]\n  },\n  \"devDependencies\": {\n    \"@babel/preset-env\": \"^7.10.2\",\n    \"@babel/preset-react\": \"^7.10.1\",\n    \"raw-loader\": \"^4.0.1\",\n    \"style-loader\": \"^1.2.1\",\n    \"babel-core\": \"^6.26.3\",\n    \"babel-loader\": \"^8.1.0\",\n    \"babel-preset-env\": \"^1.7.0\",\n    \"babel-preset-react\": \"^6.24.1\",\n    \"webpack-cli\": \"^3.3.11\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- WebInterface/public/package.json	(revision c91ec000304f9b9ac02122bbfef4e598f6b9e572)
++++ WebInterface/public/package.json	(date 1591100111058)
+@@ -1,7 +1,7 @@
+ {
+   "name": "public",
+   "version": "0.1.0",
+-  "homepage": "https://diarmuidkelly.github.io/your_project_repository_name/",,
++  "homepage": "https://diarmuidkelly.github.io/epistemiclogic/",
+   "private": true,
+   "dependencies": {
+     "@material-ui/core": "^4.10.0",
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Default ignored files\n/workspace.xml
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.gitignore	(revision c91ec000304f9b9ac02122bbfef4e598f6b9e572)
++++ .idea/.gitignore	(date 1591100080251)
+@@ -1,2 +1,4 @@
+ # Default ignored files
+-/workspace.xml
+\ No newline at end of file
++/workspace.xml
++/epistemiclogic.iml
++/misc.xml
+Index: WebInterface/public/howTo
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- WebInterface/public/howTo	(date 1591100269166)
++++ WebInterface/public/howTo	(date 1591100269166)
+@@ -0,0 +1,4 @@
++Working Directory here for webapp
++npm install
++npm run build ( To Build in bundle folder )
++npm start ( Run locally )
+\ No newline at end of file

@@ -1,4 +1,5 @@
 # Liar's Dice - Project for Epistemic Logic
+[Modify this file for the website/paper](WebInterface/public/src/blog/mainArticle.md)
 
 The code is structured as follows:<br/>
 There are three classes: Game(), Round() and Player()

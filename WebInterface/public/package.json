@@ -1,7 +1,7 @@
 {
   "name": "public",
   "version": "0.1.0",
-  "homepage": "https://diarmuidkelly.github.io/your_project_repository_name/",,
+  "homepage": "https://diarmuidkelly.github.io/epistemiclogic/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.0",

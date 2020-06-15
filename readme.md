@@ -16,3 +16,4 @@ Player() contains knowledge bases, valuation functions, dice amounts, current bi
 
 First, to run the code execute:<br/> pip install --upgrade pip; pip3 install -r requirements.txt<br/>
  to install the dependencies for this program
+ 

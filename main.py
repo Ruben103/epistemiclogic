@@ -16,10 +16,17 @@ class Game():
         self.current_round = Round(self.players, rd.randint(1,num_players))
 
         self.add_rounds()
+        self.set_KB_of_players()
+
         self.current_round.controller(rd.randint(1,num_players))
+
+    def set_KB_of_players(self):
+        for p in self.players:
+            p.construct_KB()
 
     def add_rounds(self):
         self.add_round_to_players(self.current_round)
+        self.add_game_to_players(self)
         self.add_game_to_round(self)
 
     def add_round_to_players(self, round):
@@ -37,9 +44,13 @@ class Game():
     def add_game_to_round(self, game):
         self.current_round.get_game(game)
 
+    def add_game_to_players(self, game):
+        for player in self.players:
+            player.add_game(game)
+
     def initialize_players(self, num_players):
-        for i in range(1, num_players + 1):
-            self.players.append(Player(name='P' + str(i), game=self))
+        for i in range(num_players):
+            self.players.append(Player(i, game=self))
 
     def save_round(self, state_of_round):
         self.rounds.append(state_of_round)
@@ -60,12 +71,16 @@ class Round():
         self.players = players
         self.starting_player = starting_player
         self.num_dice = self.count_dice(self.players)
+
         self.previous_it = None
         self.previous_player = None
         self.curr_bid_num = None
         self.curr_bid_val = None
 
         self.end_of_bid_phase = False
+
+    def get_num_players(self):
+        return len(self.players)
 
     def get_game(self, game):
         self.game = game
@@ -109,6 +124,7 @@ class Round():
             else:
                 self.update_CK(bid_num, bid_val)
                 self.curr_bid_num = bid_num; self.curr_bid_val = bid_val
+            self.update_player_bids()
             self.previous_player = player
             self.controller(it)
         else:
@@ -119,6 +135,11 @@ class Round():
                 p.update_valuation(p.is_possible(self.curr_bid_num, self.curr_bid_val))
                 p.print_believes(self.curr_bid_num, self.curr_bid_val)
             self.end_of_round()
+
+    def update_player_bids(self):
+        for p in self.players:
+            p.curr_bid_val = self.curr_bid_val
+            p.curr_bid_num = self.curr_bid_num
 
     def is_possible(self, dice):
         return dice.count(self.curr_bid_val) < self.curr_bid_num
@@ -145,7 +166,6 @@ class Round():
             count += player.get_num_dice()
         return count
 
-
 class Player():
 
     def __init__(self, name, game):
@@ -153,11 +173,27 @@ class Player():
         self.num_dice = 6
         self.dice = self.init_dice(self.num_dice)
         self.KB = []
-        self.update_KB()
 
         self.curr_bid_num = None
         self.curr_bid_val = None
         self.valuation = None
+
+
+    def add_game(self, game):
+        self.game = game
+
+    def construct_KB(self):
+
+        # for each player still in the game,  make an array based on the size of the dice stack of those players
+        for p in self.game.players:
+            if p.name != self.name:
+                self.KB.append([])
+            else:
+                self.KB.append(self.dice)
+        self.KB = np.asarray(self.KB)
+
+    def get_dice(self):
+        return self.dice
 
     def add_round(self, round):
         self.round = round
@@ -172,6 +208,7 @@ class Player():
         return self.num_dice
 
     def get_amount_dice(self, val):
+        # return amount of dice of a certain value
         return self.dice.count(val)
 
     def amount_possible(self, tot, num, val):
@@ -210,6 +247,35 @@ class Player():
         else:
             print("\nI'm", self.name, "and I do NOT believe this because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
 
+    def decision_table(self):
+        table = np.ndarray((2,6))
+        table = table.astype(int)
+        table[0,:] = [1, 2, 3, 4, 5, 6]
+
+        for col in range(table.shape[1]):
+            value = table[0][col]
+            cnt = 0
+            for p_it in range(len(self.KB)):
+                # should account for the count of the player's own dice
+                if value not in self.KB[p_it]:
+                    # account for the probability of having them if the value is not in KB of that player
+                    cnt += int((self.round.players[p_it].get_num_dice() - len(self.KB[p_it])) / 3)
+                else:
+                    curr_count = self.KB[p_it].count(value)
+                    cnt += curr_count
+            table[1][value - 1] = cnt
+        return table
+
+    def pick_from_decision_table(self, table):
+        table = table.transpose()
+        max_table = table[table[:, 1] == np.max(table[:, 1])].transpose()
+        if len(max_table[0]) == 1:
+            print("")
+        pick = np.random.randint(len(max_table[0]))
+        num = max_table[1][pick]; val = max_table[0][pick]
+
+        return int(num), int(val)
+
     def ask_bid(self, bid_num, bid_val):
         """
         This function makes a bid based on the players KB.
@@ -218,10 +284,11 @@ class Player():
         """
         if bid_num is not None and bid_val is not None:
             if self.is_possible(bid_num, bid_val):
-                if bid_val == 6:
-                    return bid_num + 1, 2
-                else:
-                    return bid_num, bid_val + 1
+                decision_table = self.decision_table()
+                num, val = self.pick_from_decision_table(decision_table)
+                while self.curr_bid_num is not None and num <= self.curr_bid_num:
+                    num += 1
+                return num, val
             else:
                 print("First player not to believe:")
                 self.print_believes(bid_num, bid_val)

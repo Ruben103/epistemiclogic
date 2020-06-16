@@ -58,6 +58,7 @@ class Game():
     def new_round(self, round, starting_player):
         self.save_round(round)
         self.current_round = Round(self.players, starting_player)
+        self.set_KB_of_players()
         self.add_rounds()
         print("\nROUND NUMBER", len(self.rounds) + 1, "LETS GO\n")
         self.current_round.controller(self.current_round.starting_player)
@@ -185,6 +186,7 @@ class Player():
     def construct_KB(self):
 
         # for each player still in the game,  make an array based on the size of the dice stack of those players
+        self.KB = []
         for p in self.game.players:
             if p.name != self.name:
                 self.KB.append([])
@@ -296,7 +298,6 @@ class Player():
                 return -1, -1
         else:
             return 1, 2
-
 
 class playGame(Resource):
     game = Game(num_players=4)

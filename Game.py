@@ -17,7 +17,7 @@ class Game():
         self.add_rounds()
         self.set_KB_of_players()
 
-        self.current_round.controller(rd.randint(1,num_players))
+        self.current_round.controller(rd.choice(self.players))
 
     def set_KB_of_players(self):
         for p in self.players:
@@ -59,5 +59,5 @@ class Game():
         self.current_round = R.Round(self.players, starting_player)
         self.set_KB_of_players()
         self.add_rounds()
-        print("\nROUND NUMBER", len(self.rounds) + 1, "LETS GO\n")
+        print("\nROUND NUMBER", len(self.rounds) + 1, "LETS GO")
         self.current_round.controller(self.current_round.starting_player)

@@ -87,6 +87,41 @@ class Player():
         else:
             print("\nI'm", self.name, "and I do NOT believe this because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
 
+    def count_unknown_dice(self):
+        count = 0
+        for KB in self.KB:
+            index = np.where(self.KB == KB)[0]
+
+        return count
+
+    def update_KB_of(self, player_it, num, val):
+        num_dice_player = self.round.current_player.get_num_dice()
+        total_dice = self.round.get_total_dice()
+        rest = total_dice - num_dice_player
+
+        # unknown_dice = self.count_unknown_dice()
+
+        believe = rd.random()
+
+        have = int(rest/3) - num
+        new_KB = []
+        if believe < .5:
+            if have > 1 and have < num_dice_player:
+                for i in range(have):
+                    new_KB.append(val)
+            else:
+                for i in range(num_dice_player):
+                    new_KB.append(val)
+        else:
+            if len(self.KB[player_it]) < num_dice_player:
+                self.KB[player_it].append(val)
+            else:
+                print("I have no clue what this player is doing")
+        self.KB[player_it] = new_KB
+        print("")
+
+
+
     def decision_table(self):
         table = np.ndarray((2,6))
         table = table.astype(int)
@@ -146,7 +181,6 @@ class Player():
                         # current bid is not 1
                         while self.curr_bid_num is not None and num*2 + 1 < self.curr_bid_num:
                             num += 1
-
                 return num, val
             else:
                 print("First player not to believe:")

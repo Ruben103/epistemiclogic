@@ -1,6 +1,7 @@
 import random as rd
 import Round as R
 import Player as P
+from copy import deepcopy
 
 class Game():
 
@@ -54,7 +55,7 @@ class Game():
         self.rounds.append(state_of_round)
 
     def new_round(self, round, starting_player):
-        self.save_round(round)
+        self.save_round(deepcopy(round))
         self.current_round = R.Round(self.players, starting_player)
         self.set_KB_of_players()
         self.add_rounds()

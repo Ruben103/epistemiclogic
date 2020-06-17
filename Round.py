@@ -17,6 +17,11 @@ class Round():
         self.curr_val = None
 
         self.end_of_bid_phase = False
+        self.roll_dice()
+
+    def roll_dice(self):
+        for p in self.players:
+            p.roll_dice()
 
     def get_num_players(self):
         return len(self.players)

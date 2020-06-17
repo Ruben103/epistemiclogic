@@ -15,7 +15,6 @@ class playGame(Resource):
 
         self.game.current_round.controller()
 
-
 if __name__ == '__main__':
 
     playGame(4)

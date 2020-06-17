@@ -8,13 +8,12 @@ class Player():
     def __init__(self, name, game):
         self.name = name
         self.num_dice = 6
-        self.dice = self.init_dice(self.num_dice)
+        self.dice = self.roll_dice()
         self.KB = []
 
         self.curr_bid_num = None
         self.curr_bid_val = None
         self.valuation = None
-
 
     def add_game(self, game):
         self.game = game
@@ -56,11 +55,11 @@ class Player():
     def update_valuation(self, valuation):
         self.valuation = valuation
 
-    def init_dice(self, num_dice):
-        dice = []
-        for i in range(num_dice):
-            dice.append(rd.randint(1, 6))
-        return sorted(dice)
+    def roll_dice(self):
+        self.dice = []
+        for i in range(self.num_dice):
+            self.dice.append(rd.randint(1, 6))
+        self.dice = sorted(self.dice)
 
     def remove_dice(self, valuation):
 

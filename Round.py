@@ -1,4 +1,6 @@
 import numpy as np
+import Game as G
+import Player as P
 
 class Round():
 
@@ -11,8 +13,8 @@ class Round():
 
         self.previous_it = None
         self.previous_player = None
-        self.curr_bid_num = None
-        self.curr_bid_val = None
+        self.curr_num = None
+        self.curr_val = None
 
         self.end_of_bid_phase = False
 
@@ -54,26 +56,32 @@ class Round():
         it = self.next_player(it)
         if not self.end_of_bid_phase:
 
-            bid_num, bid_val = player.ask_bid(self.curr_bid_num, self.curr_bid_val)
+            bid_num, bid_val = player.bid(self.curr_num, self.curr_val)
             if bid_num == -1 and bid_val == -1:
                 self.end_of_bid_phase = True
                 self.previous_player.valuation = True
             else:
                 self.update_CK(bid_num, bid_val)
-                self.curr_bid_num = bid_num; self.curr_bid_val = bid_val
+                self.curr_num = bid_num; self.curr_val = bid_val
+            self.update_player_bids()
             self.previous_player = player
             self.controller(it)
         else:
-            print("Valuation was not believed by player. bid_num:", self.curr_bid_num, "bid_val:", self.curr_bid_val)
+            print("Valuation was not believed by player. bid_num:", self.curr_num, "bid_val:", self.curr_val)
             for p in self.players:
                 if p.valuation is not None:
-                    p.is_possible(self.curr_bid_num, self.curr_bid_val)
-                p.update_valuation(p.is_possible(self.curr_bid_num, self.curr_bid_val))
-                p.print_believes(self.curr_bid_num, self.curr_bid_val)
+                    p.is_possible(self.curr_num, self.curr_val)
+                p.update_valuation(p.is_possible(self.curr_num, self.curr_val))
+                p.print_believes(self.curr_num, self.curr_val)
             self.end_of_round()
 
+    def update_player_bids(self):
+        for p in self.players:
+            p.curr_bid_val = self.curr_val
+            p.curr_bid_num = self.curr_num
+
     def is_possible(self, dice):
-        return dice.count(self.curr_bid_val) < self.curr_bid_num
+        return dice.count(self.curr_val) <= self.curr_num
 
     def end_of_round(self):
         dice = []
@@ -86,9 +94,6 @@ class Round():
         self.game.new_round(self, self.previous_it)
 
         print("BUGSTOPPER")
-
-    def reset_CK(self):
-        self.CK = []
 
     def count_dice(self, players):
         count = 0

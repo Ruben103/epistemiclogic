@@ -1,4 +1,7 @@
 import numpy as np
+import random as rd
+import Game
+import Round
 
 class Player():
 
@@ -19,6 +22,7 @@ class Player():
     def construct_KB(self):
 
         # for each player still in the game,  make an array based on the size of the dice stack of those players
+        self.KB = []
         for p in self.game.players:
             if p.name != self.name:
                 self.KB.append([])
@@ -46,7 +50,8 @@ class Player():
         return self.dice.count(val)
 
     def amount_possible(self, tot, num, val):
-        return int(tot / 3)
+        prob = 6 if val == 1 else 3
+        return int(tot / prob)
 
     def update_valuation(self, valuation):
         self.valuation = valuation
@@ -72,6 +77,8 @@ class Player():
 
     def is_possible(self, bid_num, bid_val):
         tot = self.round.get_total_dice()
+        if bid_val == 1:
+            print("")
         amount = self.amount_possible(tot, bid_num, bid_val) + self.get_amount_dice(bid_val)
         return amount >= bid_num
 
@@ -91,24 +98,28 @@ class Player():
             cnt = 0
             for p_it in range(len(self.KB)):
                 # should account for the count of the player's own dice
+                prob = 6 if value == 1 else 3
                 if value not in self.KB[p_it]:
                     # account for the probability of having them if the value is not in KB of that player
-                    cnt += int((self.round.players[p_it].get_num_dice() - len(self.KB[p_it])) / 3)
+                    cnt += int((self.round.players[p_it].get_num_dice() - len(self.KB[p_it])) / prob)
                 else:
                     curr_count = self.KB[p_it].count(value)
                     cnt += curr_count
             table[1][value - 1] = cnt
+        table[1,0] = table[1][0] * 2
         return table
 
     def pick_from_decision_table(self, table):
         table = table.transpose()
         max_table = table[table[:, 1] == np.max(table[:, 1])].transpose()
-        pick = np.random.randint(len(max_table))
-        num, val = max_table[1][pick], max_table[0][pick]
+        if len(max_table[0]) == 1:
+            print("")
+        pick = np.random.randint(len(max_table[0]))
+        num = max_table[1][pick]; val = max_table[0][pick]
 
-        return [num, val]
+        return int(num / 2) if val == 1 else int(num), int(val)
 
-    def ask_bid(self, bid_num, bid_val):
+    def bid(self, bid_num, bid_val):
         """
         This function makes a bid based on the players KB.
         The player needs to make a higher offer than the previous one. (Round.curr_bid_num, Round.curr_bid_val).
@@ -117,15 +128,32 @@ class Player():
         if bid_num is not None and bid_val is not None:
             if self.is_possible(bid_num, bid_val):
                 decision_table = self.decision_table()
-                (num, val) = self.pick_from_decision_table(decision_table)
-                # if bid_val == 6:
-                #     return bid_num + 1, 2
-                # else:
-                #     return bid_num, bid_val + 1
+                num, val = self.pick_from_decision_table(decision_table)
+
+                if self.curr_bid_val != 1:
+                    # previous bid is not 1
+                    if val == 1:
+                        while self.curr_bid_num is not None and num * 2 <= self.curr_bid_num:
+                            num += 1
+                    else:
+                        while self.curr_bid_num is not None and num <= self.curr_bid_num:
+                            num += 1
+                else:
+                    # previous bid was 1
+                    if val == 1:
+                        while self.curr_bid_num is not None and num <= self.curr_bid_num:
+                            num += 1
+                    else:
+                        # current bid is not 1
+                        while self.curr_bid_num is not None and num*2 + 1 < self.curr_bid_num:
+                            num += 1
+
+                return num, val
             else:
                 print("First player not to believe:")
                 self.print_believes(bid_num, bid_val)
                 self.valuation = False
+                self.round.previous_player.valuation = True
                 return -1, -1
         else:
             return 1, 2

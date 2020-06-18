@@ -20,6 +20,11 @@ class Round():
 
         self.end_of_bid_phase = False
         self.roll_dice()
+        self.reset_num_val_players()
+
+    def reset_num_val_players(self):
+        for p in self.players:
+            p.reset_num_val()
 
     def roll_dice(self):
         for p in self.players:
@@ -30,6 +35,13 @@ class Round():
 
     def get_game(self, game):
         self.game = game
+
+    def get_all_dice(self):
+        dice = []
+        for p in self.players:
+            for d in p.dice:
+                dice.append(d)
+        return dice
 
     def update_CK(self, bid_num, bid_val):
         self.CK.append((bid_num, bid_val))
@@ -53,12 +65,16 @@ class Round():
         """
         self.current_player = player
         if not self.end_of_bid_phase:
-
+            print("Current player:", self.current_player.name)
             num, val = self.current_player.bid(self.curr_num, self.curr_val)
+
             if num == -1 and val == -1:
+                print("I do not believe the previous bid: ", self.curr_num, self.curr_val)
                 self.end_of_bid_phase = True
                 self.previous_player.valuation = True
+                self.controller(self.current_player)
             else:
+                print("I RAISE the previous bid to: : ", num, val)
                 self.update_CK(num, val)
                 self.curr_num = num; self.curr_val = val
             self.update_KB_of_players(num, val)
@@ -67,13 +83,30 @@ class Round():
             self.current_player = self.next_player(self.previous_player)
             self.controller(self.current_player)
         else:
-            print("Valuation was not believed by player. bid_num:", self.curr_num, "bid_val:", self.curr_val)
+            print("======================================\nVALUATION OF PLAYERS\n======================================")
             for p in self.players:
-                if p.valuation is not None:
-                    p.is_possible(self.curr_num, self.curr_val)
-                p.update_valuation(p.is_possible(self.curr_num, self.curr_val))
-                p.print_believes(self.curr_num, self.curr_val)
+
+                if p.valuation is None:
+                    valuation = p.is_possible(self.curr_num, self.curr_val)
+                    p.valuation = valuation
+                if p.name == self.previous_player.name:
+                    print("I'm player", p.name, "my bid was not believed. Valuation:", p.valuation)
+                elif p.name == self.current_player.name:
+                    p.print_believes(self.curr_num, self.curr_val)
+                    print("Because it was my bid.")
+                else:
+                    p.print_believes(self.curr_num, self.curr_val)
             self.end_of_round()
+
+    def end_of_round(self):
+        dice = self.get_all_dice()
+        valuation = self.is_possible(dice)
+        print("\nThe actual VALUATION was:", str(valuation), "Therefore:\n")
+        for p in self.players:
+            p.remove_dice(valuation)
+        self.game.new_round(self, self.current_player)
+
+        print("BUGSTOPPER")
 
     def update_KB_of_players(self, bid, val):
         for p in self.players:
@@ -87,18 +120,6 @@ class Round():
 
     def is_possible(self, dice):
         return dice.count(self.curr_val) <= self.curr_num
-
-    def end_of_round(self):
-        dice = []
-        for p in self.players:
-            for d in p.dice:
-                dice.append(d)
-        valuation = self.is_possible(dice)
-        for p in self.players:
-            p.remove_dice(valuation)
-        self.game.new_round(self, self.previous_player)
-
-        print("BUGSTOPPER")
 
     def count_dice(self, players):
         count = 0

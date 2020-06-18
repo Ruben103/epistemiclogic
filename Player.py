@@ -15,19 +15,14 @@ class Player():
         self.curr_bid_val = None
         self.valuation = None
 
+        self.believe_parameter = 1
+        self.lying_parameter = 1
+
     def add_game(self, game):
         self.game = game
 
-    def construct_KB(self):
-
-        # for each player still in the game,  make an array based on the size of the dice stack of those players
-        self.KB = []
-        for p in self.game.players:
-            if p.name != self.name:
-                self.KB.append([])
-            else:
-                self.KB.append(self.dice)
-        self.KB = np.asarray(self.KB)
+    def reset_num_val(self):
+        self.curr_bid_num = self.curr_bid_val = None
 
     def get_dice(self):
         return self.dice
@@ -57,63 +52,73 @@ class Player():
             self.dice.append(rd.randint(1, 6))
         self.dice = sorted(self.dice)
 
+    def construct_KB(self):
+        # for each player still in the game,  make an array based on the size of the dice stack of those players
+        self.KB = []
+        for p in self.round.players:
+            if p.name != self.name:
+                self.KB.append([])
+            else:
+                self.KB.append(self.dice)
+        self.KB = np.asarray(self.KB)
+
     def remove_dice(self, valuation):
 
         if self.valuation != valuation:
-            print("Player", self.name, "'s valuation is incorrect \nOne dice is removed from his stock")
+            print("\nPlayer", self.name, "'s valuation is incorrect, One dice is removed from his stock")
             if self.num_dice > 1:
                 self.num_dice -= 1
             else:
+                print("\n", self.name, "'s dice stock is completely empty. He is out of the game")
                 self.num_dice -= 1
                 self.round.game.remove_player(self)
-                print("\n",self.name, "'s dice stock is completely empty. He is out of the game")
         else:
-            print("Player", self.name, "'s valuation is correct \nNO dice is removed from his stock")
+            print("\nPlayer", self.name, "'s valuation is correct, NO dice is removed from his stock")
 
-    def amount_possible(self, tot, num, val):
+    def amount_possible(self, tot, val):
         prob = 6 if val == 1 else 3
         return int(tot / prob)
 
-    def is_possible(self, bid_num, bid_val):
+    def is_possible(self, num, val):
+        count = 0
+        # count the number of dice in belief structure
+        for KB in self.KB:
+            count += KB.count(val)
         tot = self.round.get_total_dice()
-        self_dice = self.get_amount_dice(bid_val)
-        amount = self.amount_possible(tot - self_dice, bid_num, bid_val) + self_dice
-        return amount >= bid_num
+        amount_left = tot - count
+        amount = count + self.amount_possible(amount_left, val)
+        return amount >= num
 
     def print_believes(self, num, val):
         if self.is_possible(num, val):
-            print("\nI'm", self.name, "and I believe this bid because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
+            print("I'm Player", self.name, "I believe this bid. Valuation:", self.valuation)
         else:
-            print("\nI'm", self.name, "and I do NOT believe this because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
+            print("I'm Player", self.name, "I DO NOT believe this bid.", self.valuation)
 
+    def fill_KB(self, avail, it, val):
+        for i in range(avail):
+            self.KB[it].append(val)
 
     def update_KB_of(self, player_it, num, val):
         num_dice_player = self.round.current_player.get_num_dice()
         total_dice = self.round.get_total_dice()
         rest = total_dice - num_dice_player
 
-        # unknown_dice = self.count_unknown_dice()
-
         believe = rd.random()
 
-        have = int(rest/3) - num
-        new_KB = []
-        if believe < .5:
-            if have > 1 and have < num_dice_player:
-                for i in range(have):
-                    new_KB.append(val)
-            else:
-                for i in range(num_dice_player):
-                    new_KB.append(val)
+        if believe < self.believe_parameter:
+            # Then the player should believe this bid.
+            prob = 6 if val == 1 else 3
+            dice_available = num_dice_player - len(self.KB[player_it])
+            num_dice = int(rest / prob) - num
+            if num_dice > dice_available:
+                num_dice = dice_available
+            self.fill_KB(dice_available, player_it, val)
         else:
-            if len(self.KB[player_it]) < num_dice_player:
-                self.KB[player_it].append(val)
-            else:
-                print("I have no clue what this player is doing")
-        self.KB[player_it] = new_KB
-        print("")
-
-
+            if believe < self.believe_parameter/2:
+                # Then the player believes so strongly that the player is lying, that he revises his beliefs.
+                # If this happens, it also corresponds to the player being confused and forgetting the previous bids.
+                self.KB[player_it] = []
 
     def decision_table(self):
         table = np.ndarray((2,6))
@@ -139,8 +144,6 @@ class Player():
     def pick_from_decision_table(self, table):
         table = table.transpose()
         max_table = table[table[:, 1] == np.max(table[:, 1])].transpose()
-        if len(max_table[0]) == 1:
-            print("")
         pick = np.random.randint(len(max_table[0]))
         num = max_table[1][pick]; val = max_table[0][pick]
 
@@ -174,12 +177,15 @@ class Player():
                         # current bid is not 1
                         while self.curr_bid_num is not None and num*2 + 1 < self.curr_bid_num:
                             num += 1
+                lying = rd.random()
+                if lying < self.lying_parameter:
+                    if val == 1:
+                        num *= 2
+                    val = rd.randint(2,6)
                 return num, val
             else:
-                print("First player not to believe:")
                 self.print_believes(num, val)
                 self.valuation = False
-                self.round.previous_player.valuation = True
                 return -1, -1
         else:
             return 1, 2

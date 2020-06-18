@@ -16,8 +16,14 @@ class Game():
 
         self.add_rounds()
         self.set_KB_of_players()
+        self.set_parameters_players()
 
         self.current_round.controller(rd.choice(self.players))
+
+    def set_parameters_players(self):
+        for p in self.players:
+            p.lying_parameter = rd.random()
+            p.believe_paramter = rd.random()
 
     def set_KB_of_players(self):
         for p in self.players:
@@ -43,6 +49,7 @@ class Game():
         for p in self.players:
             if p.name == player.name:
                 self.players.remove(p)
+                print()
         if len(self.players) == 1:
             print("WE HAVE A WINNER!!!\nIts ya boy ", self.players[0].name)
             quit()
@@ -59,5 +66,5 @@ class Game():
         self.current_round = R.Round(self.players, starting_player)
         self.set_KB_of_players()
         self.add_rounds()
-        print("\nROUND NUMBER", len(self.rounds) + 1, "LETS GO")
+        print("\n\nROUND NUMBER", len(self.rounds) + 1, "LETS GO")
         self.current_round.controller(self.current_round.starting_player)

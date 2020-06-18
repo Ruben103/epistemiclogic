@@ -54,7 +54,7 @@ class Round():
         self.current_player = player
         if not self.end_of_bid_phase:
 
-            num, val = player.bid(self.curr_num, self.curr_val)
+            num, val = self.current_player.bid(self.curr_num, self.curr_val)
             if num == -1 and val == -1:
                 self.end_of_bid_phase = True
                 self.previous_player.valuation = True

@@ -48,10 +48,6 @@ class Player():
         # return amount of dice of a certain value
         return self.dice.count(val)
 
-    def amount_possible(self, tot, num, val):
-        prob = 6 if val == 1 else 3
-        return int(tot / prob)
-
     def update_valuation(self, valuation):
         self.valuation = valuation
 
@@ -74,11 +70,14 @@ class Player():
         else:
             print("Player", self.name, "'s valuation is correct \nNO dice is removed from his stock")
 
+    def amount_possible(self, tot, num, val):
+        prob = 6 if val == 1 else 3
+        return int(tot / prob)
+
     def is_possible(self, bid_num, bid_val):
         tot = self.round.get_total_dice()
-        if bid_val == 1:
-            print("")
-        amount = self.amount_possible(tot, bid_num, bid_val) + self.get_amount_dice(bid_val)
+        self_dice = self.get_amount_dice(bid_val)
+        amount = self.amount_possible(tot - self_dice, bid_num, bid_val) + self_dice
         return amount >= bid_num
 
     def print_believes(self, num, val):
@@ -87,12 +86,6 @@ class Player():
         else:
             print("\nI'm", self.name, "and I do NOT believe this because:", "\nI have", self.get_amount_dice(val), val, "'s", "\nThe rest probably has:", self.amount_possible(self.round.get_total_dice(), num, val))
 
-    def count_unknown_dice(self):
-        count = 0
-        for KB in self.KB:
-            index = np.where(self.KB == KB)[0]
-
-        return count
 
     def update_KB_of(self, player_it, num, val):
         num_dice_player = self.round.current_player.get_num_dice()
@@ -153,14 +146,14 @@ class Player():
 
         return int(num / 2) if val == 1 else int(num), int(val)
 
-    def bid(self, bid_num, bid_val):
+    def bid(self, num, val):
         """
         This function makes a bid based on the players KB.
         The player needs to make a higher offer than the previous one. (Round.curr_bid_num, Round.curr_bid_val).
         :return: tuple: bid_num, bid_val
         """
-        if bid_num is not None and bid_val is not None:
-            if self.is_possible(bid_num, bid_val):
+        if num is not None and val is not None:
+            if self.is_possible(num, val):
                 decision_table = self.decision_table()
                 num, val = self.pick_from_decision_table(decision_table)
 
@@ -184,7 +177,7 @@ class Player():
                 return num, val
             else:
                 print("First player not to believe:")
-                self.print_believes(bid_num, bid_val)
+                self.print_believes(num, val)
                 self.valuation = False
                 self.round.previous_player.valuation = True
                 return -1, -1

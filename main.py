@@ -10,14 +10,13 @@ import Player
 
 class playGame(Resource):
 
-    def __init__(self, num_players):
-        self.game = Game.Game(num_players)
-
+    def __init__(self, num_players, believe_parameters, lying_parameters):
+        self.game = Game.Game(num_players, believe_parameters, lying_parameters)
         self.game.current_round.controller()
 
+
 if __name__ == '__main__':
-
-    playGame(4)
-
+    playGame(4, believe_parameters=[1, 1, 1, 1],
+             lying_parameters=[1, 1, 1, 1])  # parameters of each player can be customized
 
     print("BUGSTOPPER")

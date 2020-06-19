@@ -12,8 +12,8 @@ class Round():
         self.num_dice = self.count_dice(self.players)
 
         self.previous_player = None
-        self.current_player = None
 
+        self.current_player = None
         self.curr_num = None
         self.curr_val = None
 

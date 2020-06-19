@@ -2,23 +2,36 @@ import random as rd
 import Round as R
 import Player as P
 from copy import deepcopy
+import sys
+
 
 class Game():
 
-    def __init__(self, num_players):
+    def __init__(self, num_players, believe_parameters=[], lying_parameters=[]):
         self.players = num_players
         self.players = []
+        self.believe_parameters = believe_parameters
+        self.lying_parameters = lying_parameters
         self.initialize_players(num_players)
+        self.introduce_players()
 
         # keep track of rounds for information retrieval in later stages
         self.rounds = []
-        self.current_round = R.Round(self.players, rd.randint(1,num_players))
+        self.current_round = R.Round(self.players, rd.randint(1, num_players))
 
         self.add_rounds()
         self.set_KB_of_players()
         self.set_parameters_players()
 
         self.current_round.controller(rd.choice(self.players))
+
+    def introduce_players(self):
+        print("########## Meet the participants #################")
+        for player in self.players:
+            print("I'm " + str(player.name) + ", and my parameters are:")
+            print("Believe parameter: " + str(player.believe_parameter))
+            print("Lying parameter: " + str(player.lying_parameter) + "\n")
+        print("##################################### START GAME #########################################\n")
 
     def set_parameters_players(self):
         for p in self.players:
@@ -49,13 +62,21 @@ class Game():
         for p in self.players:
             if p.name == player.name:
                 self.players.remove(p)
+                print()
         if len(self.players) == 1:
             print("WE HAVE A WINNER!!!\nIts ya boy ", self.players[0].name)
-            quit()
+            sys.exit()
 
     def initialize_players(self, num_players):
+        """
+        if not self.believe_parameters or not self.lying_parameters:
+            for i in range(num_players):
+                self.players.append(P.Player(i, game=self))
+        else:
+        """
         for i in range(num_players):
-            self.players.append(P.Player(i, game=self))
+            self.players.append(P.Player(i, game=self, believe_parameter=self.believe_parameters[i],
+                                         lying_parameter=self.lying_parameters[i]))
 
     def save_round(self, state_of_round):
         self.rounds.append(state_of_round)

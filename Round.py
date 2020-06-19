@@ -1,6 +1,7 @@
 import numpy as np
 import Game as G
 import Player as P
+import random as rd
 
 class Round():
 
@@ -10,13 +11,11 @@ class Round():
         self.starting_player = starting_player
         self.num_dice = self.count_dice(self.players)
 
-        self.previous_it = None
         self.previous_player = None
-
-        self.current_it = None
         self.current_player = None
-        self.curr_num = 1
-        self.curr_val = 2
+
+        self.curr_num = None
+        self.curr_val = None
 
         self.end_of_bid_phase = False
         self.roll_dice()
@@ -104,7 +103,10 @@ class Round():
         print("\nThe actual VALUATION was:", str(valuation), "Therefore:\n")
         for p in self.players:
             p.remove_dice(valuation)
-        self.game.new_round(self, self.current_player)
+        if self.current_player in self.players:
+            self.game.new_round(self, self.current_player)
+        else:
+            self.game.new_round(self, rd.choice(self.players))
 
         print("BUGSTOPPER")
 

@@ -80,6 +80,9 @@ class Player():
         return int(tot / prob)
 
     def is_possible(self, num, val):
+        if num == 1 and val == 2:
+            # make sure to always make a bid in the beginning
+            return True
         count = 0
         # count the number of dice in belief structure
         for KB in self.KB:

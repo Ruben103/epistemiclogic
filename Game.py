@@ -49,7 +49,6 @@ class Game():
         for p in self.players:
             if p.name == player.name:
                 self.players.remove(p)
-                print()
         if len(self.players) == 1:
             print("WE HAVE A WINNER!!!\nIts ya boy ", self.players[0].name)
             quit()

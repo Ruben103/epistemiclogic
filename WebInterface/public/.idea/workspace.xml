@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="53a72c37-de9a-4ef5-8290-4138ad845b5d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/blog/Blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/Blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/LAMAS_paper.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/LAMAS_paper.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/Slide1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Slide1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/introArticle.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/blog/introArticle.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blog/liarsdice.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/liarsdice.jpg" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="gh-pages" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1cilk8CthTINhVL8tEp401fOH25" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/blog" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blog" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53a72c37-de9a-4ef5-8290-4138ad845b5d" name="Default Changelist" comment="" />
+      <created>1591019434482</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591019434482</updated>
+      <workItem from="1591019436328" duration="3502000" />
+      <workItem from="1591086951339" duration="10061000" />
+      <workItem from="1591100162441" duration="2144000" />
+      <workItem from="1593427513926" duration="15459000" />
+    </task>
+    <task id="LOCAL-00001" summary="update package.json">
+      <created>1591100795222</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591100795222</updated>
+    </task>
+    <task id="LOCAL-00002" summary="automated gh-pages">
+      <created>1591101452390</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591101452390</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Website testing">
+      <created>1593442624878</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593442624878</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Website testing">
+      <created>1593442908096</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593442908096</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Website testing">
+      <created>1593445879010</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1593445879010</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update package.json" />
+    <MESSAGE value="automated gh-pages" />
+    <MESSAGE value="Website testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Website testing" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="700" y="354" width="577" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591100211570">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="700" y="354" width="577" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.1053@67.27.1853.1053" timestamp="1591100211570" />
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1593445878876">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1593445878876" />
+    <state width="1830" height="278" key="GridCell.Tab.0.bottom" timestamp="1593444805210">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="278" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1593444805210" />
+    <state width="1830" height="278" key="GridCell.Tab.0.center" timestamp="1593444805209">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="278" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1593444805209" />
+    <state width="1830" height="278" key="GridCell.Tab.0.left" timestamp="1593444805209">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="278" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1593444805209" />
+    <state width="1830" height="278" key="GridCell.Tab.0.right" timestamp="1593444805210">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="278" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1593444805210" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1593445880670">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1593445880670" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1593434235070">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1593434235070" />
+    <state x="718" y="422" width="540" height="260" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1591094497261">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="718" y="422" width="540" height="260" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1591094497261" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/blog/Main.js</url>
+          <line>25</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

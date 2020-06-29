@@ -86,7 +86,7 @@ export default function Blog() {
               ))}
             </Grid>
             <Main title="" posts={[strategiesArticle]} />
-            <iframe src="./src/blog/LAMAS_paper.pdf" width="100%" height="1080px"/>
+            <iframe src="https://github.com/Ruben103/epistemiclogic/raw/master/WebInterface/public/src/blog/LAMAS_paper.pdf" width="100%" height="1080px"/>
 
           {/*<Sidebar*/}
             {/*  title={sidebar.title}*/}

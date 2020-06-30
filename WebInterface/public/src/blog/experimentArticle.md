@@ -19,12 +19,16 @@ Results of each experiment mentiond above are shown in the following figures:
 
 <div class="row">
     <div class="column">
-        ### Thruthful opponent
+        Experiment 1
         <img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
+    </div>
+    <div>
+      <img src={WebInterface/public/Liar_2.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+    </div>
+    <div>
       <img src={WebInterface/public/Disbeliever_3.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div class="column">
-      <img src={WebInterface/public/Liar_2.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
       <img src={WebInterface/public/Average_Opponent_4.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div>

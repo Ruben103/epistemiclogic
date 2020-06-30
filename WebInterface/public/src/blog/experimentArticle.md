@@ -19,19 +19,23 @@ Results of each experiment mentiond above are shown in the following figures:
 
 <div class="row">
     <div class="column">
-        Experiment 1
+      <p style="text-align: center;"> Exp 1: Thruthful Opponent </p>
         <img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
     </div>
     <div>
       <img src={WebInterface/public/Liar_2.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <p style="text-align: center;"> Exp 2: Complete liar </p>
     </div>
     <div>
+      <p style="text-align: center;"> Exp 3: Disbeliever </p>
       <img src={WebInterface/public/Disbeliever_3.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div class="column">
       <img src={WebInterface/public/Average_Opponent_4.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <p style="text-align: center;"> Exp 4: Average Opponent </p>
     </div>
     <div>
+      <p style="text-align: center;"> Exp 5: Random Opponent </p>
       <img src={WebInterface/public/Random_5.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     

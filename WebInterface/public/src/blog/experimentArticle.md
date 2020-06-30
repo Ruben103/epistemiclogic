@@ -15,6 +15,6 @@ In case of 2 - players game, we decided to examine different combinations of bel
   <li>Exp 5: Random opponent - Believing parameter value: Random | Lying parameter value: Random</li>
 </ul>
 
-epistemiclogic/WebInterface/public/
 
-<img src={./Thruthful_Opponent_1.jpg} width="300" height="200" style="border-radius: 8px  "/>
+
+<img src={epistemiclogic/WebInterface/public//Thruthful_Opponent_1.jpg} width="300" height="200" style="border-radius: 8px  "/>

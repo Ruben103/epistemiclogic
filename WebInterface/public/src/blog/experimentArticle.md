@@ -19,7 +19,7 @@ Results of each experiment mentiond above are shown in the following figures:
 
 <div class="row">
     <div class="column">
-      <p style="text-align: center;"> Exp 1: Thruthful Opponent </p>
+      <h3> Exp 1: Thruthful Opponent </h3>
         <img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
     </div>
     <div>

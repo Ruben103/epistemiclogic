@@ -15,6 +15,11 @@ In case of 2 - players game, we decided to examine different combinations of bel
   <li>Exp 5: Random opponent - Believing parameter value: Random | Lying parameter value: Random</li>
 </ul>
 
+Results of each experiment mentiond above are shown in the following figure:
 
-
-<img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="300" style="border-radius: 8px  "/>
+<img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+Exp 1
+<img src={WebInterface/public/Liar_2.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+<img src={WebInterface/public/Disbeliever_3.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+<img src={WebInterface/public/Average_Opponent_4.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
+<img src={WebInterface/public/Random_5.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>

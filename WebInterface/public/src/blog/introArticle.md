@@ -12,8 +12,7 @@ each others' knowledge in order to make bets and predict beliefs about the state
 
 # What is Liar's Dice?
 
-<!--<img src={./src/blog/dice-gif.gif} width="200" height="200"/>-->
-<img src={./liarsdice.jpg} width="300" height="200" style="border-radius: 8px  "/>
+<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/liarsdice.jpg} width="300" height="200" style="border-radius: 8px  "/>
 ### Setup and initial rules
 Liar's Dice is a game of deception. The game is played with at least 2 players with each being given 5 dice in the 'single hand' variant of the game.
 The game is played in turn based rounds, where each player rolls their dice concealed from other players under a cup.
@@ -37,4 +36,4 @@ The player that loses the round, either the challenger or the bidder, removes on
 Once a player loses all their dice, they are removed from the game. The player with at least one remaining
 die after all rounds is the winner. 
  
- <img src={./Slide1.jpg} width="500" height="400" style="border-radius: 8px; "/>
+ <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Slide1.jpg} width="500" height="400" style="border-radius: 8px; "/>

@@ -20,23 +20,23 @@ Results of each experiment mentiond above are shown in the following figures:
 <div class="row">
     <div class="column">
       <h4> Exp 1: Thruthful Opponent </h4>
-        <img src={./Thruthful_Opponent_1.png} width="700" height="500" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
+        <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Thruthful_Opponent_1.png} width="700" height="500" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
     </div>
     <div>
       <h4> Exp 2: Complete liar </h4>
-      <img src={./Liar_2.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Liar_2.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div>
       <h4> Exp 3: Disbeliever </h4>
-      <img src={./Disbeliever_3.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Disbeliever_3.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div class="column">
       <h4> Exp 4: Average Opponent </h4>
-      <img src={./Average_Opponent_4.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Average_Opponent_4.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     <div>
       <h4> Exp 5: Random Opponent </h4>
-      <img src={./Random_5.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+      <img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Random_5.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
     </div>
     
 

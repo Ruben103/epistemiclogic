@@ -17,4 +17,4 @@ In case of 2 - players game, we decided to examine different combinations of bel
 
 
 
-<img src={./Thruthful_Opponent_1.jpg} width="500" style="border-radius: 8px  "/>
+<img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="300" style="border-radius: 8px  "/>

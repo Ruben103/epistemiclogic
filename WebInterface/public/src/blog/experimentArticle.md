@@ -16,15 +16,10 @@ In case of 2 - players game, we decided to examine different combinations of bel
 </ul>
 
 Results of each experiment mentiond above are shown in the following figures:
-
-<figure>
-  <div class="row">
+<div class="row">
     <div class="column">
-      <img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
-      <figcaption>Caption goes here</figcaption>
+      <img src={WebInterface/public/Thruthful_Opponent_1.png} width="500" height="400" style="border-radius: 8px  " caption="xd" style="vertical-align:middle;"/>
       <img src={WebInterface/public/Disbeliever_3.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
-      Experiment 2
-
     </div>
     <div class="column">
       <img src={WebInterface/public/Liar_2.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
@@ -32,7 +27,8 @@ Results of each experiment mentiond above are shown in the following figures:
       <img src={WebInterface/public/Random_5.png} width="500" height="400" style="border-radius: 8px  " style="vertical-align:middle;"/>
 
     </div>
-  </div>
-</figure>
+
+</div>
+
 
 

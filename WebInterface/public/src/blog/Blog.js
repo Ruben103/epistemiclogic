@@ -18,6 +18,7 @@ import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import introArticle from './introArticle.md';
 import strategiesArticle from './strategiesArticle.md';
+import experimentArticle from './experimentArticle.md';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -87,7 +88,7 @@ export default function Blog() {
             </Grid>
             <Main title="" posts={[strategiesArticle]} />
             <iframe src="./LAMAS_paper.pdf" width="100%" height="1080px"/>
-
+          <Main title="" posts={[experimentArticle]} />
           {/*<Sidebar*/}
             {/*  title={sidebar.title}*/}
             {/*  description={sidebar.description}*/}

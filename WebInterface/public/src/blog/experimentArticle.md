@@ -48,7 +48,7 @@ When we have been performing experiments with 2 players, we have made some assum
 
 ### 3-players 
 
-<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/3_players_two_random.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/3_players_two_random.png} width="700" height="500" style="border-radius: 8px  " style="display: block;margin-left: auto;margin-right: auto;width: 60%;"/>
 
 ### 4-players
 

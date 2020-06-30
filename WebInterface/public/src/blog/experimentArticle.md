@@ -17,4 +17,4 @@ In case of 2 - players game, we decided to examine different combinations of bel
 
 
 
-<img src={epistemiclogic/WebInterface/public//Thruthful_Opponent_1.jpg} width="300" height="200" style="border-radius: 8px  "/>
+<img src={epistemiclogic/WebInterface/public/Thruthful_Opponent_1.jpg} width="300" height="200" style="border-radius: 8px  "/>

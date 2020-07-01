@@ -84,6 +84,8 @@ export default function Blog() {
             <Main title="" posts={[strategiesArticle]} />
             <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/LAMAS_paper.pdf" width="100%" height="1080px"/>
           <Main title="" posts={[experimentArticle]} />
+          <Main title="Conclusions" posts={[conclusionsArticle]} />
+          <Main title="Discussion" posts={[discussionArticle]} />
           {/*<Sidebar*/}
             {/*  title={sidebar.title}*/}
             {/*  description={sidebar.description}*/}

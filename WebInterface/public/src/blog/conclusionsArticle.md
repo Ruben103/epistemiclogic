@@ -1,6 +1,5 @@
 <div id="conclusions"></div>
 
-# Conclusions
 According  to  the  results  of  our  experiments,  we  can  conclude  that  believing  parameter  playedsignificant role in the simulations.  There is almost a linear dependency 
 between its amount andnumber of games our agent managed to win.  According to that correlation, we can easily deducethat believing in others players bids is an optimal strategy, 
 no matter of which strategy the opponentwill choose.  That is compatible with our intuition.  Calling a lie is a bit risky in Liar’s Dice, sincewe have to have quite a lot of 

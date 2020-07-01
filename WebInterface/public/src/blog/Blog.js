@@ -10,6 +10,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import Header from './Header';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
+import FeaturedImages from './FeaturedImages';
 import Main from './Main';
 import Footer from './Footer';
 import introArticle from './introArticle.md';
@@ -59,6 +60,21 @@ const featuredPosts = [
   },
 ];
 
+const featuredImages = [
+  {
+    title: 'Exp 1: Truthful Opponent',
+    image: 'https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/Thruthful_Opponent_1.png',
+    imageText: 'Image Text',
+  },
+  {
+    title: 'Example 2',
+    description:
+        'Marie has just made the bidding ”Two sixes”. John is the only allowed to increase the quantity, because no eyes are higher than six.  Johnis then allowed to say ”Three three’s,  he does not have to say ”Three Sixes”. When the quantity is increased, the value may be ’reset’.  NOTE: John is also allowed to skip quantities: he could have immediately went from three to seven.\n',
+    image: 'https://source.unsplash.com/random',
+    imageText: 'Image Text',
+  },
+];
+
 
 
 
@@ -74,18 +90,27 @@ export default function Blog() {
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           {/*<Grid container spacing={5} className={classes.mainGrid}>*/}
-            <Main title="" posts={[introArticle]} />
-            <Grid container spacing={2} direction="row"
-                  alignItems="center"
-                  justify="center"
-                  >
-              {featuredPosts.map((post) => (
-                  <FeaturedPost key={post.title} post={post} />
-              ))}
-            </Grid>
-            <Main title="" posts={[strategiesArticle]} />
-            <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/LAMAS_paper.pdf" width="100%" height="1080px"/>
-          <Main title="" posts={[experimentArticle]} />
+          <Main title="" posts={[introArticle]} />
+          <Grid container spacing={5} direction="row"
+                alignItems="center"
+                justify="center"
+                >
+            {featuredPosts.map((post) => (
+                <FeaturedPost key={post.title} post={post} />
+            ))}
+          </Grid>
+          <Main title="" posts={[strategiesArticle]} />
+          <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/LAMAS_paper.pdf" width="100%" height="1080px"/>
+          <Main title="Experiments" posts={[experimentArticle]} />
+          <Grid container spacing={2} direction="row"
+                // alignItems="center"
+                // justify="center"
+          >
+          {featuredImages.map((post) => (
+              <FeaturedImages key={post.title} post={post} />
+          ))}
+          </Grid>
+
           <Main title="Conclusions" posts={[conclusionsArticle]} />
           <Main title="Discussion" posts={[discussionArticle]} />
           {/*<Sidebar*/}

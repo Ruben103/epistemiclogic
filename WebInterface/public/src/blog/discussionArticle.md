@@ -1,6 +1,5 @@
 <div id="discussion"></div>
 
-# Discussion
 Liar's Dice is a game which, is very difficult to model. That difficulty follows from the fact, that it is still a big challenge to model humans behaviour, even in games. 
 The biggest advantage of developing simplified environments like we did in this project, is the ability to simulate a big number of games in relatively short time. 
 Analyzing large amount of data gathered from contests played between agents can bring instructive conclusions and give a broader view on the examined problem. 

@@ -1,6 +1,5 @@
 <div id="experiments"></div>
 
-# Experiments
 One of the most important skills in Liar Dice is bluffing and capability to challenge biddings in appropriate moment. In our implementation, we decided to model lying and believing by adding two variables, which allow to parameterize those features for every player. Each parameter is a number from 0 to 1, which corresponds to a probability of believing in previous bid or to bluff in the bid of current agent. That brings a big number of possibilities to model different types of players and examine which strategy will provide the highest chance to win the Liar's Dice game. To make use of it, we decided to carry out some interesting experiments with various numbers of players in the game.
 
 ## 2 - players game

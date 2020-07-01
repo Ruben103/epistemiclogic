@@ -52,7 +52,8 @@ When we have been performing experiments with 2 players, we have made some assum
 
 ### 4-players
 
-<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/4_players.png} width="700" height="500" style="border-radius: 8px  " style="vertical-align:middle;"/>
+<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/4_players.png} width="700" height="500" style="border-radius: 8px;vertical-align:middle;  "/>
 
 ### 5-players
 
+<img src={https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/5_players.png} width="700" height="500" style="border-radius: 8px;vertical-align:middle;  "/>

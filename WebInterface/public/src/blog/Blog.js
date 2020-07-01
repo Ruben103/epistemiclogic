@@ -15,6 +15,8 @@ import Footer from './Footer';
 import introArticle from './introArticle.md';
 import strategiesArticle from './strategiesArticle.md';
 import experimentArticle from './experimentArticle.md';
+import conclusionsArticle from './conclusionsArticle.md';
+import discussionArticle from './discussionArticle.md';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -25,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
 const sections = [
   { title: 'Introduction', url: '#intro' },
   { title: 'Theoretical Justification', url: '#theory' },
-  { title: 'Strategies', url: '#' },
-  { title: 'Experiments', url: '#' },
-  { title: 'Discussion', url: '#' },
-  { title: 'Conclusion', url: '#' },
+  { title: 'Experiments', url: '#experiments' },
+  { title: 'Conclusion', url: '#conclusions' },
+  { title: 'Discussion', url: '#discussion' },
+
 ];
 
 const mainFeaturedPost = {

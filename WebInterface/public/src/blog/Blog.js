@@ -104,7 +104,7 @@ export default function Blog() {
             ))}
           </Grid>
           <Main title="" posts={[strategiesArticle]} />
-          <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/LAMAS_paper.pdf" width="100%" height="1080px"/>
+          <iframe src="./LAMAS_paper.pdf" width="100%" height="1080px"/>
           <Main title="Experiments" posts={[experimentArticle]} />
           {/*<Grid container spacing={2} direction="row"*/}
           {/*      // alignItems="center"*/}

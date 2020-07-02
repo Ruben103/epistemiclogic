@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="98877acc-b845-4ffe-b646-0be235377dbf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/WebInterface/public/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebInterface/public/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="gh-pages" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1e2pbqPG4044kBDebY7js4PV1iP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WebInterface/public/images" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="98877acc-b845-4ffe-b646-0be235377dbf" name="Default Changelist" comment="" />
+      <created>1593529615376</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593529615376</updated>
+      <workItem from="1593529616512" duration="2025000" />
+      <workItem from="1593533205138" duration="354000" />
+      <workItem from="1593674381631" duration="1165000" />
+    </task>
+    <task id="LOCAL-00001" summary="ignore">
+      <created>1593529649167</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593529649167</updated>
+    </task>
+    <task id="LOCAL-00002" summary="remove modules">
+      <created>1593531532963</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593531532963</updated>
+    </task>
+    <task id="LOCAL-00003" summary="save images to static">
+      <created>1593533449665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593533449665</updated>
+    </task>
+    <task id="LOCAL-00004" summary="tables for images and fixed PDF">
+      <created>1593675339235</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593675339236</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="ignore" />
+    <MESSAGE value="remove modules" />
+    <MESSAGE value="save images to static" />
+    <MESSAGE value="tables for images and fixed PDF" />
+    <option name="LAST_COMMIT_MESSAGE" value="tables for images and fixed PDF" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593533323673">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="726" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1593533323673" />
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2" timestamp="1593675339061">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="532" y="100" width="912" height="904" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1593675339061" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1593533177515">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1593533177515" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1593675340757">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1593675340757" />
+    <state x="718" y="422" width="540" height="260" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1593531363424">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="718" y="422" width="540" height="260" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1593531363424" />
+  </component>
+</project>

@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
+  td: {
+    margin: '20px',
+
+  }
 }));
 
 const sections = [
@@ -100,16 +104,16 @@ export default function Blog() {
             ))}
           </Grid>
           <Main title="" posts={[strategiesArticle]} />
-          <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/images/LAMAS_paper.pdf" width="100%" height="1080px"/>
+          <iframe src="https://raw.githubusercontent.com/Ruben103/epistemiclogic/master/WebInterface/public/LAMAS_paper.pdf" width="100%" height="1080px"/>
           <Main title="Experiments" posts={[experimentArticle]} />
-          <Grid container spacing={2} direction="row"
-                // alignItems="center"
-                // justify="center"
-          >
-          {featuredImages.map((post) => (
-              <FeaturedImages key={post.title} post={post} />
-          ))}
-          </Grid>
+          {/*<Grid container spacing={2} direction="row"*/}
+          {/*      // alignItems="center"*/}
+          {/*      // justify="center"*/}
+          {/*>*/}
+          {/*{featuredImages.map((post) => (*/}
+          {/*    <FeaturedImages key={post.title} post={post} />*/}
+          {/*))}*/}
+          {/*</Grid>*/}
 
           <Main title="Conclusions" posts={[conclusionsArticle]} />
           <Main title="Discussion" posts={[discussionArticle]} />
